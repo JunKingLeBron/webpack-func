@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes bbc {
+            0% {
+                width: 100px;
+            }
+            100% {
+                width: 300px;
+            }
+        }
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(800px, 0);
+            }
+            50% {
+                transform: translate(800px, 500px);
+            }
+            75% {
+                transform: translate(0, 500px);
+            }
+           100% {
+                transform: translate(0, 0);
+            }
+        }
+        .d3 {
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            background-color: purple;
+            animation-name: move;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        .div1 {
+            float: left;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+        .p1 {
+            clear: left;
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="d3"></div>
+    <div>
+        <div>
+            <span id="word">1</span>
+            <button id="button">防抖测试</button>
+        </div>
+        <div class="div1"></div>
+        <p class="p1"></p>
+
+        <div class="upload">
+            <input type="file" id="input" />
+            <button id="del">删除</button>
+            <img src="" alt="" id="img" />
+        </div>
+    </div>
+    <script>
+        var delBtn = document.getElementById('del')
+        let imgBox = document.getElementById('img')
+        delBtn.addEventListener('click', function() {
+            //console.log('111')
+            document.getElementById('input').value = ''
+            imgBox.src = ''
+        })
+
+        document.getElementById('input').onchange = function() {
+            var fileList = document.getElementById('input').files
+            console.log(fileList)
+            let reader = new FileReader()
+            reader.readAsDataURL(fileList[0])
+            reader.onload = e => {
+                
+                imgBox.src = e.target.result
+            }
+           
+           // delBtn.onclick = 
+           /* 
+           读取文件内容
+           let reader = new FileReader()
+            reader.readAsText(fileList[0], 'UTF-8')
+            reader.onload = (e) => {
+                console.log(e.target.result)
+            } */
+            //console.log(file)
+        }
+        /* var obj = {
+            value: 1
+        }
+        
+        document.getElementById("button").addEventListener("click", function(){
+            obj.value += 1
+        });
+
+
+        (function() {
+            var root = this;
+            function watch(obj, name, func) {
+                var value = obj[name]
+                Object.defineProperty(obj, name, {
+                    get: function() {
+                        return value
+                    },
+                    set: function(newValue) {
+                        value = newValue
+                        func(value)
+                    }
+                    
+                })
+                if(value) obj[name] = value
+            }
+            this.watch = watch
+        })()
+        watch(obj, "value", function(newValue) {
+            document.getElementById('word').innerHTML = newValue
+        }) */
+        //订阅发布模式
+        /* class Dep {
+            constructor() {
+                //订阅的数组
+                this.subs = [];
+            }
+            //添加订阅者
+            addSub(watcher) {
+                this.subs.push(watcher);
+            }
+            //通知
+            notify(val) {
+                this.subs.forEach(watcher => {
+                    watcher&&watcher(val)
+                })
+            }
+        }
+        let dep = new Dep()
+        dep.addSub((val) => {
+            console.log(val)
+        })
+        dep.notify('第一次发布')
+        setTimeout(() => {
+            dep.notify('第二次发布')
+        }, 1000); */
+
+        /* console.log(test)
+        function test() {
+            //alert('1')
+        }
+        test()
+        function test() {
+           // alert('2')
+        }
+        test() */
+
+        function payMoney () {
+            console.log('一朵')
+        }
+
+        const debounce = (func, wait) => {
+            let timer = null
+            return function(...args) {
+            if (timer) clearTimeout(timer)
+            timer = setTimeout(() => {
+                console.log(this)
+                func.apply(this, args)
+            }, wait)
+            }
+        }
+        const but = document.getElementById("button")
+
+        but.addEventListener('click', debounce(payMoney, 1000))
+        
+
+    </script>
+</body>
+</html>

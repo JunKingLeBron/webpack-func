@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkvue_cli_demo=self.webpackChunkvue_cli_demo||[]).push([[588],{3588:function(n,u,e){e.r(u),e.d(u,{default:function(){return r}});var t=e(6252);const c={};var r=(0,e(3744).Z)(c,[["render",function(n,u){return(0,t.wg)(),(0,t.iD)("div",null,"About")}]])},3744:function(n,u){u.Z=(n,u)=>{const e=n.__vccOpts||n;for(const[n,t]of u)e[n]=t;return e}}}]);
+//# sourceMappingURL=588.efc822b664.chunk.js.map
